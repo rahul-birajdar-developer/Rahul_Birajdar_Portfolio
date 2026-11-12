@@ -1,0 +1,28 @@
+.heading {
+  max-width: 640px;
+  margin-bottom: 3rem;
+}
+
+.eyebrow {
+  font-family: var(--font-code);
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 0.9rem;
+}
+
+.eyebrow span {
+  color: var(--violet);
+}
+
+.title {
+  font-size: clamp(1.9rem, 4vw, 2.75rem);
+  font-weight: 700;
+}
+
+.description {
+  margin-top: 1rem;
+  color: var(--muted-foreground);
+  font-size: 1.05rem;
+}

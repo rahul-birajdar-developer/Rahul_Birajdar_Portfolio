@@ -1,0 +1,115 @@
+.timeline {
+  position: relative;
+  padding-left: 4rem;
+  max-width: 860px;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 21px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--primary), var(--violet), transparent);
+  border-radius: 2px;
+}
+
+.marker {
+  position: absolute;
+  left: 0;
+  top: 1.5rem;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  color: var(--primary-foreground);
+  background: var(--gradient-accent);
+  box-shadow: 0 0 0 6px var(--background), var(--shadow-button);
+}
+
+.card {
+  padding: 2rem;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border);
+  background: var(--card);
+  box-shadow: var(--shadow-card);
+}
+
+.top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.degree {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.institution {
+  margin-top: 0.35rem;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.badge {
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  font-family: var(--font-code);
+  font-size: 0.75rem;
+  color: var(--success);
+  background: color-mix(in oklab, var(--success) 10%, transparent);
+  border: 1px solid color-mix(in oklab, var(--success) 35%, transparent);
+}
+
+.note {
+  margin-top: 1.25rem;
+  color: var(--muted-foreground);
+}
+
+.facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem 3rem;
+  margin: 1.5rem 0 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.facts dt {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.82rem;
+  color: var(--muted-foreground);
+}
+
+.facts dd {
+  margin: 0.25rem 0 0;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 600px) {
+  .timeline {
+    padding-left: 0;
+    padding-top: 3.5rem;
+  }
+
+  .timeline::before {
+    display: none;
+  }
+
+  .marker {
+    top: 0;
+  }
+
+  .card {
+    padding: 1.5rem;
+  }
+}

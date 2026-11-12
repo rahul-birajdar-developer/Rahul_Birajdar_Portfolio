@@ -1,0 +1,219 @@
+/*
+ * Tailwind v4 entry + the portfolio design system.
+ * Every color, gradient, shadow and font lives here as a CSS variable (a "token").
+ * Components style themselves with CSS Modules that only reference these tokens,
+ * so switching data-theme="light" on <html> re-themes the whole site.
+ */
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --font-display: var(--font-heading);
+  --font-sans: var(--font-body);
+  --font-mono: var(--font-code);
+}
+
+/* ---------- Dark theme (default) ---------- */
+:root {
+  color-scheme: dark;
+  --radius: 0.875rem;
+
+  --font-heading: "Sora", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-code: "JetBrains Mono", ui-monospace, monospace;
+
+  --background: oklch(0.14 0.028 268);
+  --background-elevated: oklch(0.17 0.032 268);
+  --foreground: oklch(0.96 0.01 268);
+  --card: oklch(0.185 0.034 268);
+  --card-foreground: var(--foreground);
+  --popover: var(--card);
+  --popover-foreground: var(--foreground);
+
+  /* Electric blue */
+  --primary: oklch(0.7 0.16 248);
+  --primary-foreground: oklch(0.14 0.03 268);
+  /* Subtle purple */
+  --violet: oklch(0.66 0.19 295);
+
+  --secondary: oklch(0.23 0.036 268);
+  --secondary-foreground: var(--foreground);
+  --muted: oklch(0.21 0.03 268);
+  --muted-foreground: oklch(0.72 0.03 268);
+  --accent: oklch(0.25 0.05 268);
+  --accent-foreground: var(--foreground);
+  --destructive: oklch(0.68 0.19 22);
+  --destructive-foreground: oklch(0.98 0 0);
+  --success: oklch(0.76 0.15 158);
+  --warning: oklch(0.82 0.13 80);
+
+  --border: oklch(1 0 0 / 9%);
+  --border-strong: oklch(1 0 0 / 16%);
+  --input: oklch(1 0 0 / 12%);
+  --ring: var(--primary);
+
+  --glass: oklch(0.19 0.035 268 / 62%);
+  --glass-border: oklch(1 0 0 / 10%);
+  --grid-line: oklch(1 0 0 / 4%);
+
+  --gradient-accent: linear-gradient(120deg, var(--primary), var(--violet));
+  --gradient-text: linear-gradient(110deg, var(--foreground) 20%, var(--primary) 60%, var(--violet));
+  --glow-primary: radial-gradient(closest-side, oklch(0.7 0.16 248 / 22%), transparent);
+  --glow-violet: radial-gradient(closest-side, oklch(0.66 0.19 295 / 18%), transparent);
+
+  --shadow-card: 0 1px 0 oklch(1 0 0 / 4%) inset, 0 20px 40px -24px oklch(0 0 0 / 70%);
+  --shadow-lift: 0 1px 0 oklch(1 0 0 / 6%) inset, 0 28px 60px -28px oklch(0.7 0.16 248 / 35%);
+  --shadow-button: 0 10px 30px -12px oklch(0.7 0.16 248 / 60%);
+
+  --nav-height: 72px;
+  --container: 1160px;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ---------- Light theme ---------- */
+[data-theme="light"] {
+  color-scheme: light;
+  --background: oklch(0.985 0.004 268);
+  --background-elevated: oklch(0.965 0.008 268);
+  --foreground: oklch(0.2 0.04 268);
+  --card: oklch(1 0 0);
+  --primary: oklch(0.55 0.19 254);
+  --primary-foreground: oklch(0.99 0 0);
+  --violet: oklch(0.52 0.21 295);
+  --secondary: oklch(0.95 0.01 268);
+  --muted: oklch(0.955 0.008 268);
+  --muted-foreground: oklch(0.47 0.035 268);
+  --accent: oklch(0.93 0.025 268);
+  --success: oklch(0.55 0.14 158);
+  --warning: oklch(0.6 0.13 70);
+  --destructive: oklch(0.56 0.2 25);
+  --border: oklch(0.2 0.04 268 / 10%);
+  --border-strong: oklch(0.2 0.04 268 / 18%);
+  --input: oklch(0.2 0.04 268 / 14%);
+  --glass: oklch(1 0 0 / 70%);
+  --glass-border: oklch(0.2 0.04 268 / 10%);
+  --grid-line: oklch(0.2 0.04 268 / 5%);
+  --glow-primary: radial-gradient(closest-side, oklch(0.55 0.19 254 / 14%), transparent);
+  --glow-violet: radial-gradient(closest-side, oklch(0.52 0.21 295 / 10%), transparent);
+  --shadow-card: 0 1px 2px oklch(0.2 0.04 268 / 6%), 0 18px 40px -26px oklch(0.2 0.04 268 / 25%);
+  --shadow-lift: 0 1px 2px oklch(0.2 0.04 268 / 8%), 0 26px 50px -26px oklch(0.55 0.19 254 / 35%);
+  --shadow-button: 0 10px 26px -12px oklch(0.55 0.19 254 / 55%);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: calc(var(--nav-height) + 16px);
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin: 0;
+  }
+
+  p { margin: 0; }
+
+  a { color: inherit; text-decoration: none; }
+
+  ::selection {
+    background: color-mix(in oklab, var(--primary) 35%, transparent);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+}
+
+/* Scroll-reveal: only hide content when JavaScript is running (html.js), so
+   the page is still readable if scripts fail. */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.js .reveal.reveal-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.skip-link {
+  position: absolute;
+  left: 16px;
+  top: -100px;
+  z-index: 100;
+  padding: 10px 16px;
+  border-radius: 10px;
+  background: var(--primary);
+  color: var(--primary-foreground);
+  font-weight: 600;
+}
+.skip-link:focus { top: 16px; }
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  .js .reveal { opacity: 1; transform: none; }
+}
